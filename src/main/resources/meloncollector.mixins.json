@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "melonmodding.meloncollector.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ItemStackMixin",
+    "PlayerMixin"
+  ],
+  "client": [
+    "GameSettingsMixin",
+    "MinecraftMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

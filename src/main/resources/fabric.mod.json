@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "meloncollector",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
+  "name": "Melon Collector",
+  "description": "A Client-Side Mod for BTA that includes QOL changes for all the collectors out there.",
   "authors": [
-    "Turnip Labs"
+    "MelonMojito"
   ],
   "contact": {
     "homepage": "",
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"melonmodding.meloncollector.MelonCollector"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"melonmodding.meloncollector.MelonCollector"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"melonmodding.meloncollector.MelonCollector"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"melonmodding.meloncollector.MelonCollector"
 		]
 	},
   "mixins": [
-      "examplemod.mixins.json"
+		"meloncollector.mixins.json"
   ],
 
   "depends": {
