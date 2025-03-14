@@ -1,6 +1,6 @@
-package melonmodding.meloncollector.mixins;
+package melonmodding.collector.mixins;
 
-import melonmodding.meloncollector.MelonCollector;
+import melonmodding.collector.Collector;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.GameSettings;
 import net.minecraft.client.option.OptionBoolean;
@@ -20,7 +20,7 @@ public abstract class GameSettingsMixin {
 
 	@Inject(method = "<init>", at = @At(value = "NEW", target = "(Ljava/io/File;Ljava/lang/String;)Ljava/io/File;"))
 	public void addOptions(Minecraft minecraft, File file, CallbackInfo ci){
-		MelonCollector.initOptions((GameSettings) (Object)this);
-		this.toolDisabling = MelonCollector.toolDisabling;
+		Collector.initOptions((GameSettings) (Object)this);
+		this.toolDisabling = Collector.toolDisabling;
 	}
 }

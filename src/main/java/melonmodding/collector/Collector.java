@@ -1,4 +1,4 @@
-package melonmodding.meloncollector;
+package melonmodding.collector;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.options.components.BooleanOptionComponent;
@@ -15,20 +15,20 @@ import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 
-public class MelonCollector implements ModInitializer, RecipeEntrypoint, GameStartEntrypoint {
-    public static final String MOD_ID = "meloncollector";
+public class Collector implements ModInitializer, RecipeEntrypoint, GameStartEntrypoint {
+    public static final String MOD_ID = "collector";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static OptionsPage MelonCollectorOptions;
+	public static OptionsPage CollectorOptions;
 	public static OptionBoolean toolDisabling;
 
     @Override
     public void onInitialize() {
-        LOGGER.info("MelonCollector initialized.");
+        LOGGER.info("Collector initialized.");
     }
 
 	public static void initOptions(GameSettings settings){
-		toolDisabling = new OptionBoolean(settings, "meloncollector.category.tools.toolDisabling", false);
+		toolDisabling = new OptionBoolean(settings, "collector.category.tools.toolDisabling", false);
 	}
 
 	@Override
@@ -48,11 +48,11 @@ public class MelonCollector implements ModInitializer, RecipeEntrypoint, GameSta
 
 	@Override
 	public void afterGameStart() {
-		MelonCollectorOptions =
-			new OptionsPage("options.meloncollector.title", new ItemStack(Items.BASKET))
-				.withComponent(new OptionsCategory("options.meloncollector.category.tools")
+		CollectorOptions =
+			new OptionsPage("options.collector.title", new ItemStack(Items.BASKET))
+				.withComponent(new OptionsCategory("options.collector.category.tools")
 					.withComponent(new BooleanOptionComponent(toolDisabling)));
 
-		OptionsPages.register(MelonCollectorOptions);
+		OptionsPages.register(CollectorOptions);
 	}
 }

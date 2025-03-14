@@ -1,6 +1,6 @@
-package melonmodding.meloncollector.mixins;
+package melonmodding.collector.mixins;
 
-import melonmodding.meloncollector.MelonCollector;
+import melonmodding.collector.Collector;
 import net.minecraft.client.player.controller.PlayerControllerMP;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.Player;
@@ -22,7 +22,7 @@ public class PlayerControllerMPMixin {
 		cancellable = true
 	)
 	void attack(Player entityplayer, Entity entity, CallbackInfo ci){
-		if(MelonCollector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
+		if(Collector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
 			if(entityplayer.getCurrentEquippedItem().getMetadata() >= entityplayer.getCurrentEquippedItem().getMaxDamage() - 1){
 				ci.cancel();
 				return;
@@ -36,7 +36,7 @@ public class PlayerControllerMPMixin {
 		cancellable = true
 	)
 	void useItem(Player entityplayer, World world, ItemStack itemstack, CallbackInfoReturnable<Boolean> cir){
-		if(MelonCollector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
+		if(Collector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
 			if(entityplayer.getCurrentEquippedItem().getMetadata() >= entityplayer.getCurrentEquippedItem().getMaxDamage() - 1){
 				cir.cancel();
 				return;
@@ -50,7 +50,7 @@ public class PlayerControllerMPMixin {
 		cancellable = true
 	)
 	void useItemOn(Player entityplayer, World world, ItemStack itemstack, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced, CallbackInfoReturnable<Boolean> cir){
-		if(MelonCollector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
+		if(Collector.toolDisabling.value && entityplayer.getCurrentEquippedItem() != null && entityplayer.getCurrentEquippedItem().getItem() instanceof ItemTool){
 			if(entityplayer.getCurrentEquippedItem().getMetadata() >= entityplayer.getCurrentEquippedItem().getMaxDamage() - 1){
 				cir.cancel();
 				return;

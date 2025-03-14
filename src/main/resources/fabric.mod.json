@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "meloncollector",
+  "id": "collector",
   "version": "${version}",
 
   "name": "Melon Collector",
@@ -19,20 +19,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"melonmodding.meloncollector.MelonCollector"
+			"melonmodding.collector.Collector"
     ],
 		"beforeGameStart": [
-			"melonmodding.meloncollector.MelonCollector"
+			"melonmodding.collector.Collector"
 		],
 		"afterGameStart": [
-			"melonmodding.meloncollector.MelonCollector"
+			"melonmodding.collector.Collector"
 		],
 		"recipesReady": [
-			"melonmodding.meloncollector.MelonCollector"
+			"melonmodding.collector.Collector"
 		]
 	},
   "mixins": [
-		"meloncollector.mixins.json"
+		"collector.mixins.json"
   ],
 
   "depends": {

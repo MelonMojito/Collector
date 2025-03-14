@@ -1,6 +1,6 @@
-package melonmodding.meloncollector.mixins;
+package melonmodding.collector.mixins;
 
-import melonmodding.meloncollector.MelonCollector;
+import melonmodding.collector.Collector;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.PlayerLocal;
 import net.minecraft.client.gui.Screen;
@@ -44,7 +44,7 @@ public abstract class MinecraftMixin {
 
 		breakBlockPressed = this.gameSettings.keyAttack.isPressed() || this.controllerInput != null && this.controllerInput.buttonRightTrigger.isPressed();
 
-		if(MelonCollector.toolDisabling.value && this.thePlayer.getHeldItem() != null && this.thePlayer.getHeldItem().getItem() instanceof ItemTool) {
+		if(Collector.toolDisabling.value && this.thePlayer.getHeldItem() != null && this.thePlayer.getHeldItem().getItem() instanceof ItemTool) {
 			ItemStack heldItem = this.thePlayer.getHeldItem();
 
 			if (heldItem != null && heldItem.getMetadata() == heldItem.getMaxDamage()) {

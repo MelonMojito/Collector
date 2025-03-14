@@ -1,6 +1,6 @@
-package melonmodding.meloncollector.mixins;
+package melonmodding.collector.mixins;
 
-import melonmodding.meloncollector.MelonCollector;
+import melonmodding.collector.Collector;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.Mob;
@@ -43,7 +43,7 @@ public abstract class ItemStackMixin {
 		at = @At("HEAD")
 	)
 	void damageItem(int i, Entity entity, CallbackInfo ci){
-		if(MelonCollector.toolDisabling.value) {
+		if(Collector.toolDisabling.value) {
 			if (!(entity instanceof Player) || ((Player) entity).getGamemode().toolDurability()) {
 				if (this.metadata == this.getMaxDamage() - 1 && this.getItem() != Items.PAINTBRUSH && !(this.getItem() instanceof ItemArmor)) {
 					Minecraft.getMinecraft().thePlayer.sendMessage(TextFormatting.GRAY + "[" + TextFormatting.LIGHT_GRAY + this.getDisplayName() + TextFormatting.GRAY + "]" + TextFormatting.LIGHT_GRAY + "'s " + TextFormatting.RED + "Durability is Low...");
@@ -60,7 +60,7 @@ public abstract class ItemStackMixin {
 		cancellable = true
 	)
 	void hitEntity(Mob target, Player attacker, CallbackInfo ci){
-		if(MelonCollector.toolDisabling.value){
+		if(Collector.toolDisabling.value){
 			if(this.metadata == this.getMaxDamage() - 2){
 				Minecraft.getMinecraft().thePlayer.sendMessage(TextFormatting.GRAY + "[" + TextFormatting.LIGHT_GRAY + this.getDisplayName() + TextFormatting.GRAY + "]" + TextFormatting.LIGHT_GRAY + "'s " + TextFormatting.RED + "Durability is Low...");
 				Minecraft.getMinecraft().thePlayer.sendMessage(TextFormatting.RED + "- [Tool Disabled] -");
@@ -79,7 +79,7 @@ public abstract class ItemStackMixin {
 		cancellable = true
 	)
 	void useItem(Player entityplayer, World world, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced, CallbackInfoReturnable<Boolean> cir){
-		if(MelonCollector.toolDisabling.value){
+		if(Collector.toolDisabling.value){
 			if(this.getItem() instanceof ItemTool && this.metadata >= this.getMaxDamage()){
 				cir.cancel();
 				return;
