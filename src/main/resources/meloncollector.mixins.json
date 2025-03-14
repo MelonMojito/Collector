@@ -9,7 +9,8 @@
   ],
   "client": [
     "GameSettingsMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "PlayerControllerMPMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -4,9 +4,11 @@ import melonmodding.meloncollector.MelonCollector;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.PlayerLocal;
 import net.minecraft.client.gui.Screen;
+import net.minecraft.client.input.InputType;
 import net.minecraft.client.input.controller.ControllerInput;
 import net.minecraft.client.option.GameSettings;
 import net.minecraft.core.item.ItemStack;
+import net.minecraft.core.item.tool.ItemTool;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -32,6 +34,8 @@ public abstract class MinecraftMixin {
 	public ControllerInput controllerInput;
 	@Shadow
 	public PlayerLocal thePlayer;
+	@Shadow
+	public InputType inputType;
 	@Unique
 	boolean breakBlockPressed;
 
@@ -40,7 +44,7 @@ public abstract class MinecraftMixin {
 
 		breakBlockPressed = this.gameSettings.keyAttack.isPressed() || this.controllerInput != null && this.controllerInput.buttonRightTrigger.isPressed();
 
-		if(MelonCollector.toolDisabling.value) {
+		if(MelonCollector.toolDisabling.value && this.thePlayer.getHeldItem() != null && this.thePlayer.getHeldItem().getItem() instanceof ItemTool) {
 			ItemStack heldItem = this.thePlayer.getHeldItem();
 
 			if (heldItem != null && heldItem.getMetadata() == heldItem.getMaxDamage()) {
